@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     const minPrice = parseInt(searchParams.get("price[min]") || "0");
     const maxPrice = parseInt(searchParams.get("price[max]") || "100000");
 
-    const products = await prisma.product.findMany({
+    const product = await prisma.product.findMany({
       where: {
         OR: [
           ...categories.map((category) => ({ style: { contains: category } })),
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
       },
     });
 
-    return NextResponse.json({ message: "API route is working" });
+    return NextResponse.json({ message: "API route is working", product });
   } catch (error) {
     console.error("Error selecting product", error);
     return NextResponse.error();

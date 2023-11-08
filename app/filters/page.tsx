@@ -72,7 +72,7 @@ const Page = (props: Props) => {
             <div className='px-10'>
                 <h1 className='py-3 text-2xl font-medium'>Filtered Clothings</h1>
                 <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-20 gap-12 mt-5'>
-                    {/* {response.map((product:any) => (
+                    {Array.isArray(response) ? (response.map((product:any) => (
                         <div key={product.id}>
                             <Link href={`/dashboard/${product.id}`}>
                                 <div className='relative rounded-lg'>
@@ -87,7 +87,7 @@ const Page = (props: Props) => {
                                 </div>
                             </Link>
                         </div>
-                    ))} */}
+                    ))) : (<p>No products to display</p>)}
                 </div>
             </div>
         </div>
